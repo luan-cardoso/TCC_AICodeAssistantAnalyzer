@@ -33,37 +33,35 @@ public class CodeAnalyzerService(GeminiService gemini)
 
     // ── Prompt ────────────────────────────────────────────────────────────────
 
-    private static string BuildAnalysisPrompt(string code, string originalRequest) => """
-        Você é um revisor de código sênior especialista em qualidade, boas práticas e segurança.
-        Analise o código abaixo que foi gerado para atender à seguinte solicitação:
-        "{originalRequest}"
-
-        CÓDIGO:
-        {code}
-
-        Retorne APENAS um objeto JSON válido (sem markdown, sem texto extra) com esta estrutura exata:
-        {{
-          "quality": {{
-            "score": <0-10>,
-            "assessment": "<avaliação geral da qualidade>",
-            "suggestions": ["<sugestão 1>", "<sugestão 2>"]
-          }},
-          "structure": {{
-            "score": <0-10>,
-            "assessment": "<avaliação da estrutura e organização>",
-            "suggestions": ["<sugestão 1>", "<sugestão 2>"]
-          }},
-          "security": {{
-            "score": <0-10>,
-            "riskLevel": "<Low|Medium|High|Critical>",
-            "assessment": "<avaliação de segurança>",
-            "vulnerabilities": ["<vulnerabilidade encontrada ou 'Nenhuma identificada'>"],
-            "recommendations": ["<recomendação 1>"]
-          }},
-          "overallScore": <0-100>,
-          "summary": "<resumo executivo da análise em 2-3 frases>"
-        }}
-        """;
+    private static string BuildAnalysisPrompt(string code, string originalRequest) => $$"""
+    Você é um revisor de código sênior especialista em qualidade, boas práticas e segurança.
+    Analise o código abaixo que foi gerado para atender à seguinte solicitação:
+    "{{originalRequest}}"
+    CÓDIGO:
+    {{code}}
+    Retorne APENAS um objeto JSON válido (sem markdown, sem texto extra) com esta estrutura exata:
+    {
+      "quality": {
+        "score": <0-10>,
+        "assessment": "<avaliação geral da qualidade>",
+        "suggestions": ["<sugestão 1>", "<sugestão 2>"]
+      },
+      "structure": {
+        "score": <0-10>,
+        "assessment": "<avaliação da estrutura e organização>",
+        "suggestions": ["<sugestão 1>", "<sugestão 2>"]
+      },
+      "security": {
+        "score": <0-10>,
+        "riskLevel": "<Low|Medium|High|Critical>",
+        "assessment": "<avaliação de segurança>",
+        "vulnerabilities": ["<vulnerabilidade encontrada ou 'Nenhuma identificada'>"],
+        "recommendations": ["<recomendação 1>"]
+      },
+      "overallScore": <0-100>,
+      "summary": "<resumo executivo da análise em 2-3 frases>"
+    }
+    """;
 
     // ── Parsers ───────────────────────────────────────────────────────────────
 
