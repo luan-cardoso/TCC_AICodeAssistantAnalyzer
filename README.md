@@ -1,5 +1,5 @@
 ## 💻 O que este projeto faz?
-``Este projeto tem como objetivo conectar à uma API do Gemini, gerar código requisitado pelo usuário e, principalmente, realizar uma análise relacionada à qualidade, estrutura e segurança do código gerado.``
+Este projeto tem como objetivo conectar à uma API do Gemini, gerar código requisitado pelo usuário e, principalmente, realizar uma análise relacionada à qualidade, estrutura e segurança do código gerado.
 
 
 
