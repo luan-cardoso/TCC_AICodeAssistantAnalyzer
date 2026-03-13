@@ -13,10 +13,9 @@ public static class DisplayService
     {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("""
-        ╔══════════════════════════════════════════════════╗
-        ║        AI Code Assistant Analyzer                ║
-        ║        Powered by Google Gemini                  ║
-        ╚══════════════════════════════════════════════════╝
+        ╔═════════════════════════════════════════╗
+        ║        AI Code Assistant Analyzer       ║               
+        ╚═════════════════════════════════════════╝
         """);
         Console.ResetColor();
     }
